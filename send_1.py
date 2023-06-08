@@ -7,8 +7,8 @@ application_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 
 
 def run_script():
-    username = 'puma'
-    password = "cisco"
+    username = 'xxxx'
+    password = "xxxx"
 
     bk_file_path = os.path.join(application_path, "boxes.txt")
     with open(bk_file_path) as f:
