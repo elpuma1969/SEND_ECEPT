@@ -7,8 +7,8 @@ application_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 
 
 def run_script():
-    username = 'dsnyadmin'
-    password = "1dsny37~"
+    username = 'xxxxxx'
+    password = "xxxxxx"
 
     bk_file_path = os.path.join(application_path, "cisco_master.txt")
     with open(bk_file_path) as f:
