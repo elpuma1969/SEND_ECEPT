@@ -1,5 +1,6 @@
 from netmiko import ConnectHandler
 
+
 def vlan_run(ip, username, password, vlans):
     try:
         device = {
@@ -21,7 +22,7 @@ def vlan_run(ip, username, password, vlans):
             command = f"vlan {vlan_id}\nname {vlan_name}"
             config_commands.append(command)
 
-        output = connection.send_config_set(config_commands, delay_factor=4)  # Adjust delay_factor if needed
+        output = connection.send_config_set(config_commands, cmd_verify=False)
         print(output)
 
         connection.disconnect()
@@ -30,17 +31,18 @@ def vlan_run(ip, username, password, vlans):
     except Exception as e:
         print(f"An error occurred while configuring device {ip}: {str(e)}")
 
-with open('device_ips.txt', 'r') as file:
+
+with open('boxes.txt', 'r') as file:
     device_ips = file.read().splitlines()
 
 vlans = {
-    '10': 'VLAN10',
-    '20': 'VLAN20',
-    '30': 'VLAN30',
+    '10': 'New_balance',
+    '20': 'AirMax',
+    '30': 'Yeezy',
 }
 
-username = 'your_username'
-password = 'your_password'
+username = 'puma'
+password = 'cisco'
 
 for ip in device_ips:
     vlan_run(ip, username, password, vlans)
