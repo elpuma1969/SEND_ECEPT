@@ -7,6 +7,10 @@ def vlan_run(ip, username, password, vlans):
             'ip': ip,
             'username': username,
             'password': password,
+            'global_delay_factor': 2,  # Increase global delay factor for slower devices
+            'timeout': 30,  # Increase timeout value
+            'session_timeout': 60,  # Increase session timeout value
+            'fast_cli': False,  # Disable fast_cli mode for better compatibility
         }
 
         connection = ConnectHandler(**device)
@@ -17,7 +21,7 @@ def vlan_run(ip, username, password, vlans):
             command = f"vlan {vlan_id}\nname {vlan_name}"
             config_commands.append(command)
 
-        output = connection.send_config_set(config_commands)
+        output = connection.send_config_set(config_commands, delay_factor=4)  # Adjust delay_factor if needed
         print(output)
 
         connection.disconnect()
